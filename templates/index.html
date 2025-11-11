@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚡ Electricity Consumption Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='chart.min.js') }}"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>⚡ PowerCalc</h2>
+      <ul>
+        <li class="active" onclick="showSection('dashboard')">Dashboard</li>
+        <li onclick="showSection('history')">History</li>
+        <li onclick="showSection('reports')">Reports</li>
+        <li onclick="showSection('settings')">Settings</li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div id="dashboard" class="section active-section">
+        <div class="header">
+          <h1>Electricity Consumption Dashboard</h1>
+          <p>Calculate and monitor your power usage instantly!</p>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <h3>Customer Name</h3>
+            <input type="text" id="name" placeholder="Enter your name">
+          </div>
+          <div class="card">
+            <h3>Units Consumed</h3>
+            <input type="number" id="units" placeholder="Enter units used">
+          </div>
+        </div>
+        <button id="calc-btn" onclick="calculateBill()">⚡ Calculate Bill</button>
+        <div class="result" id="result">
+          <h2>Bill Summary</h2>
+          <p>Enter details and click Calculate.</p>
+        </div>
+      </div>
+
+      <div id="history" class="section">
+        <h2>📜 Bill History</h2>
+        <table id="historyTable">
+          <thead><tr><th>Name</th><th>Units</th><th>Amount (₹)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div id="reports" class="section">
+        <h2>📊 Reports</h2>
+        <canvas id="reportChart" width="400" height="200"></canvas>
+      </div>
+
+      <div id="settings" class="section">
+        <h2>⚙️ Settings</h2>
+        <button onclick="toggleTheme()">Toggle Light/Dark Mode</button>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
